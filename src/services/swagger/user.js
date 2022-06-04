@@ -29,10 +29,10 @@ export async function createUsersWithListInput(body, options) {
     ...(options || {}),
   });
 }
-/** Logs user into the system GET /user/login */
+/** Logs user into the system GET /login */
 
 export async function loginUser(params, options) {
-  return request('/user/login', {
+  return request('/login', {
     method: 'GET',
     params: { ...params },
     ...(options || {}),
