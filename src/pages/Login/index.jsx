@@ -33,37 +33,41 @@ const Login = () => {
 
   const handleSubmit = async (values) => {
     setLoginOk(true);
-    try {
-      // 登录
-      const msg = await login({ ...values, type });
-      if (msg.status === 'ok') {
-        setLoginOk(true);
-        const defaultLoginSuccessMessage = intl.formatMessage({
-          id: 'pages.login.success',
-          defaultMessage: '登录成功！',
+    if (values.username && values.password) {
+      try {
+        // 登录
+        const msg = await login({ ...values, type });
+        if (msg.status === 'ok') {
+          setLoginOk(true);
+          const defaultLoginSuccessMessage = intl.formatMessage({
+            id: 'pages.login.success',
+            defaultMessage: '登录成功！',
+          });
+          // message.success(defaultLoginSuccessMessage);
+          await fetchUserInfo();
+          /** 此方法会跳转到 redirect 参数所在的位置 */
+
+          if (!history) return;
+          const { query } = history.location;
+          const { redirect } = query;
+          history.push(redirect || '/');
+          return;
+        }
+        setLoginOk(false);
+
+        console.log(msg); // 如果失败去设置用户错误信息
+        // message.error(msg.status)
+        setUserLoginState(msg);
+      } catch (error) {
+        setLoginOk(false);
+        const defaultLoginFailureMessage = intl.formatMessage({
+          id: 'pages.login.failure',
+          defaultMessage: '登录失败，请重试！',
         });
-        // message.success(defaultLoginSuccessMessage);
-        await fetchUserInfo();
-        /** 此方法会跳转到 redirect 参数所在的位置 */
-
-        if (!history) return;
-        const { query } = history.location;
-        const { redirect } = query;
-        history.push(redirect || '/');
-        return;
+        message.error(defaultLoginFailureMessage);
       }
+    } else {
       setLoginOk(false);
-
-      console.log(msg); // 如果失败去设置用户错误信息
-      // message.error(msg.status)
-      setUserLoginState(msg);
-    } catch (error) {
-      setLoginOk(false);
-      const defaultLoginFailureMessage = intl.formatMessage({
-        id: 'pages.login.failure',
-        defaultMessage: '登录失败，请重试！',
-      });
-      message.error(defaultLoginFailureMessage);
     }
   };
 

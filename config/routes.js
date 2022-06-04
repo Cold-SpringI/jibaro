@@ -1,28 +1,12 @@
 export default [
-  // {
-  //   path: '/user',
-  //   layout: false,
-  //   routes: [
-  //     {
-  //       name: 'login',
-  //       path: '/login',
-  //       component: './Login',
-  //     },
-  //     {
-  //       component: './404',
-  //     },
-  //   ],
-  // },
   {
     path: '/login',
-    name: 'login',
     layout: false,
     component: './Login',
   },
   {
     path: '/welcome',
-    name: 'welcome',
-    icon: 'smile',
+    layout: false,
     component: './Welcome',
   },
   {

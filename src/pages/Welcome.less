@@ -1,8 +1,1065 @@
-@import (reference) '~antd/es/style/themes/index';
+.main-left {
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  width: 15%;
+  width: calc(0% + 15rem);
+  height: 100%;
+  // float: left;
+  overflow-x: auto;
+  background-color: #fff;
+  background-color: var(--menu-bg-color);
+  box-shadow: rgba(0, 0, 0, 0.75) 0 0 15px -5px;
 
-.pre {
-  margin: 12px 0;
-  padding: 12px 20px;
-  background: @input-bg;
-  box-shadow: @card-shadow;
+  ul {
+    padding-inline-start: 0;
+  }
+
+  .sidenav-header {
+    padding: 1.5rem 0.5rem;
+    text-align: center;
+
+    .brand {
+      color: #5e72e4;
+      color: var(--primary);
+      font-size: 1.8rem;
+      font-family: 'TypoGraphica';
+      text-align: center;
+      text-decoration: none;
+      vertical-align: text-bottom;
+      cursor: default;
+    }
+  }
+
+  &::-webkit-scrollbar {
+    width: 5px;
+    height: 1px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #f6f9fc;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: #fff;
+  }
+}
+
+.main-right {
+  float: right;
+  width: 85%;
+  width: calc(100% - 15rem);
+  height: 100%;
+  transition: all 0.2s;
+}
+
+.main {
+  .main-left {
+    transition: all 0.2s;
+
+    .nav {
+      margin-top: 0.5rem;
+
+      > li > a:first-child {
+        position: relative;
+        display: block;
+        margin: 0.1rem 0.5rem 0.1rem 0.5rem;
+        padding: 0.675rem 0 0.675rem 2.5rem;
+        font-size: 1rem;
+        text-decoration: none;
+        border-radius: 0.375rem;
+        cursor: default;
+        transition: all 0.2s;
+
+        &.active {
+          color: #fff;
+          background: #5e72e4;
+          background: var(--primary);
+
+          &::before {
+            color: #fff !important;
+          }
+
+          &::after {
+            color: #fff !important;
+            transform: rotate(90deg);
+          }
+        }
+
+        &:hover {
+          color: #fff;
+          background: #5e72e4;
+          background: var(--primary);
+          cursor: pointer;
+
+          &::before {
+            color: #fff !important;
+          }
+        }
+
+        &::before {
+          position: absolute;
+          left: 0.8rem;
+          padding-top: 3px;
+          color: #5e72e4;
+          color: var(--primary);
+          font-weight: normal;
+          font-family: 'argon' !important;
+          font-style: normal;
+          font-variant: normal;
+          line-height: 1;
+          text-transform: none;
+          transition: all 0.3s;
+          content: '\e915';
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+        }
+      }
+
+      li {
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        // padding: 0;
+
+        a {
+          display: block;
+          color: #5f6368;
+          color: var(--menu-color);
+        }
+
+        &.slide {
+          padding: 0;
+
+          ul {
+            display: none;
+            overflow: hidden;
+          }
+
+          &:hover {
+            background: none;
+          }
+
+          .slide-menu {
+            margin: 0 0.5rem 0 2.5rem;
+            padding: 0 0.5rem;
+
+            &.active {
+              display: block;
+            }
+
+            li {
+              position: relative;
+              margin: 0;
+              padding: 0.5rem 0;
+              list-style: none;
+              background: none;
+              border-radius: 0.375rem;
+
+              a {
+                text-decoration: none;
+              }
+
+              &::after {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 0;
+                height: 2px;
+                background-color: #5e72e4;
+                background-color: var(--primary);
+                transition: all 0.2s;
+                content: '';
+              }
+
+              &:hover {
+                background: none;
+
+                &::after {
+                  width: 100%;
+                }
+              }
+            }
+
+            .active {
+              color: var(--menu-color);
+              background: none;
+
+              a {
+                color: var(--menu-color);
+              }
+
+              &::after {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 2px;
+                background-color: #5e72e4;
+                background-color: var(--primary);
+                transition: all 0.2s;
+                content: '';
+              }
+
+              &:hover {
+                background: none;
+
+                &::after {
+                  width: 100%;
+                }
+              }
+            }
+          }
+        }
+
+        .menu {
+          position: relative;
+          display: block;
+          margin: 0.1rem 0.5rem 0.1rem 0.5rem;
+          padding: 0.675rem 0 0.675rem 2.5rem;
+          font-size: 1rem;
+          text-decoration: none;
+          border-radius: 0.375rem;
+          cursor: default;
+          transition: all 0.2s;
+
+          &.active {
+            color: #fff;
+            background: #5e72e4;
+            background: var(--primary);
+
+            &::before {
+              color: #fff !important;
+            }
+
+            &::after {
+              color: #fff !important;
+              transform: rotate(90deg);
+            }
+          }
+
+          &:hover {
+            color: #fff;
+            background: #5e72e4;
+            background: var(--primary);
+            cursor: pointer;
+
+            &::before {
+              color: #fff !important;
+            }
+          }
+
+          &::before {
+            position: absolute;
+            left: 0.8rem;
+            padding-top: 3px;
+            color: #5e72e4;
+            color: var(--primary);
+            font-weight: normal;
+            font-family: 'argon' !important;
+            font-style: normal;
+            font-variant: normal;
+            line-height: 1;
+            text-transform: none;
+            transition: all 0.3s;
+            content: '\e915';
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+          }
+
+          &::after {
+            position: absolute;
+            top: 0.8rem;
+            right: 0.5rem;
+            color: #ced4da;
+            font-weight: normal;
+            font-family: 'argon' !important;
+            font-style: normal;
+            font-variant: normal;
+            line-height: 1;
+            text-transform: none;
+            transition: all 0.15s ease;
+            content: '\e90f';
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: auto;
+            // transition: all 0.3s;
+          }
+        }
+
+        .menu[data-title='Status']::before {
+          color: #5e72e4;
+          color: var(--primary);
+          content: '\e906';
+        }
+
+        .menu[data-title='System']::before {
+          color: #fb6340;
+          content: '\e90a';
+        }
+
+        .menu[data-title='Services']::before {
+          color: #11cdef;
+          content: '\e909';
+        }
+
+        .menu[data-title='NAS']::before {
+          color: #f3a4b5;
+          content: '\e90c';
+        }
+
+        .menu[data-title='VPN']::before {
+          color: #8965e0;
+          content: '\e90b';
+        }
+
+        .menu[data-title='Network']::before {
+          color: #8965e0;
+          content: '\e908';
+        }
+
+        .menu[data-title='Bandwidth_Monitor']::before {
+          color: #2dce89;
+          content: '\e90d';
+        }
+
+        .menu[data-title='Docker']::before {
+          color: #69f;
+          content: '\e911';
+        }
+
+        .menu[data-title='Statistics']::before {
+          color: #8965e0;
+          content: '\e913';
+        }
+
+        .menu[data-title='Control']::before {
+          color: #5e72e4;
+          color: var(--primary);
+          content: '\e912';
+        }
+
+        .menu[data-title='Asterisk']::before {
+          color: #fb6340;
+          content: '\e914';
+        }
+
+        a[data-title='Logout']::before {
+          color: #adb5bd;
+          content: '\e907';
+        }
+      }
+    }
+  }
+}
+
+body[class*='node-'] > .main > .main-left > .nav > .slide > .menu::before {
+  transition: transform 0.1s ease-in-out;
+}
+
+body[class*='node-'] > .main > .main-left > .nav > .slide > .menu.active::before {
+  transition: transform 0.2s ease-in-out;
+}
+
+.main > .main-left[style*='overflow: hidden'] > .nav > .slide > .menu::before {
+  display: none;
+}
+
+@media screen and (max-width: 1600px) {
+  header > .fill > .container > #logo {
+    margin: 0 2.5rem 0 0.5rem;
+  }
+
+  .main-left {
+    width: calc(0% + 13rem);
+  }
+
+  .main-right {
+    width: calc(100% - 13rem);
+  }
+
+  .btn:not(button),
+  .cbi-button {
+    font-size: 0.8rem;
+  }
+
+  .label {
+    padding: 0.2rem 0.6rem;
+  }
+
+  .cbi-value-title {
+    width: 15rem;
+    padding-right: 0.6rem;
+  }
+
+  .cbi-value-field .cbi-dropdown,
+  .cbi-value-field .cbi-input-select,
+  .cbi-value input[type='text'],
+  .cbi-value input[type='password'] {
+    min-width: 18rem;
+  }
+
+  #cbi-firewall-zone .cbi-input-select {
+    min-width: 9rem;
+  }
+
+  .cbi-input-textarea {
+    font-size: small;
+  }
+
+  .node-admin-status > .main fieldset li > a {
+    padding: 0.3rem 0.6rem;
+  }
+}
+
+@media screen and (max-width: 1366px) {
+  header > .fill > .container {
+    cursor: default;
+  }
+
+  .main-left {
+    width: calc(0% + 13rem);
+  }
+
+  .main-right {
+    width: calc(100% - 13rem);
+  }
+
+  .tabs > li > a,
+  .cbi-tabmenu > li > a {
+    padding: 0.2rem 0.8rem;
+  }
+
+  .panel-title {
+    padding-bottom: 1rem;
+    font-size: 1.1rem;
+  }
+
+  table {
+    width: 100% !important;
+    font-size: 0.7rem !important;
+  }
+
+  .table .cbi-input-text {
+    width: 100%;
+  }
+
+  .cbi-value-field .cbi-dropdown,
+  .cbi-value-field .cbi-input-select,
+  .cbi-value input[type='text'],
+  .cbi-value input[type='password'] {
+    min-width: 16rem;
+  }
+
+  #cbi-firewall-zone .cbi-input-select {
+    min-width: 4rem;
+  }
+
+  .main > .main-left > .nav > li,
+  .main > .main-left > .nav > li > a,
+  .main .main-left .nav > li > a:first-child,
+  .main > .main-left > .nav > .slide > .menu,
+  .main > .main-left > .nav > li > [data-title='Logout'] {
+    font-size: 0.9rem;
+  }
+
+  .main > .main-left > .nav > .slide > .slide-menu > li > a {
+    font-size: 0.7rem;
+  }
+
+  #modal_overlay {
+    top: 0;
+  }
+
+  [data-page='admin-network-firewall-forwards'] .table:not(.cbi-section-table) {
+    display: block;
+  }
+
+  [data-page='admin-network-firewall-forwards'] .table:not(.cbi-section-table),
+  [data-page='admin-network-firewall-rules'] .table:not(.cbi-section-table),
+  [data-page='admin-network-hosts'] .table,
+  [data-page='admin-network-routes'] .table {
+    overflow-y: visible;
+  }
+
+  .commandbox {
+    width: 32% !important;
+  }
+
+  .btn:not(button),
+  .cbi-button {
+    font-size: 0.8rem;
+  }
+}
+
+@media screen and (max-width: 1152px) {
+  header > .fill > .container > #logo {
+    display: none;
+  }
+
+  header > .fill > .container > .brand {
+    position: relative;
+  }
+
+  html,
+  .main {
+    overflow-y: visible;
+  }
+
+  .main > .loading > span {
+    top: 25%;
+  }
+
+  .main-left {
+    width: calc(0% + 13rem);
+  }
+
+  .main-right {
+    width: calc(100% - 13rem);
+  }
+
+  body:not(.logged-in) .showSide {
+    width: 0;
+    margin: 0;
+    visibility: hidden;
+  }
+
+  .node-main-login > .main .cbi-value-title {
+    text-align: left;
+  }
+
+  .cbi-value-title {
+    width: 12rem;
+    padding-right: 1rem;
+  }
+
+  .cbi-value-field .cbi-dropdown,
+  .cbi-value-field .cbi-input-select,
+  .cbi-value input[type='text'] {
+    width: 16rem;
+    min-width: 16rem;
+  }
+
+  /* .cbi-value input[type="password"], */
+  .cbi-value input[name^='pw'],
+  .cbi-value input[data-update='change']:nth-child(2) {
+    width: 13rem !important;
+    min-width: 13rem;
+  }
+
+  #diag-rc-output > pre,
+  #command-rc-output > pre,
+  [data-page='admin-services-wol'] .notice code {
+    font-size: 1rem;
+  }
+
+  .table {
+    display: block;
+  }
+
+  .Interfaces .table {
+    overflow-x: hidden;
+  }
+
+  #packages.table {
+    display: grid;
+  }
+
+  .tr {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .Overview .table[width='100%'] > .tr {
+    flex-wrap: nowrap;
+  }
+
+  .tr.placeholder {
+    border-bottom: thin solid #ddd;
+  }
+
+  .tr.placeholder > .td,
+  #cbi-firewall .tr > .td,
+  #cbi-network .tr:nth-child(2) > .td,
+  .cbi-section #wifi_assoclist_table .tr > .td {
+    border-top: 0;
+  }
+
+  .th,
+  .td {
+    display: inline-block;
+    flex: 2 2 10%;
+    align-self: flex-start;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+  }
+
+  .td select,
+  .td input[type='text'] {
+    width: 100%;
+    word-wrap: normal;
+  }
+
+  .td [data-dynlist] > input,
+  .td input.cbi-input-password {
+    width: calc(100% - 1.5rem);
+  }
+
+  .td[data-type='button'],
+  .td[data-type='fvalue'] {
+    flex: 1 1 12.5%;
+    text-align: left;
+  }
+
+  .th.cbi-value-field,
+  .td.cbi-value-field,
+  .th.cbi-section-table-cell,
+  .td.cbi-section-table-cell {
+    flex-basis: auto;
+    padding-top: 1rem;
+  }
+
+  .cbi-section-table-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 2px 0 rgba(0, 0, 0, 0.12);
+  }
+
+  .td.cbi-value-field,
+  .cbi-section-table-cell {
+    display: inline-block;
+    flex: 10 10 auto;
+    flex-basis: 50%;
+    text-align: center;
+  }
+
+  .td.cbi-section-actions {
+    vertical-align: bottom;
+  }
+
+  .tr.table-titles,
+  .tr.cbi-section-table-titles,
+  .tr.cbi-section-table-descr {
+    display: none;
+  }
+
+  .tr[data-title]::before,
+  .tr.cbi-section-table-titles.named::before {
+    display: block;
+    flex: 1 1 100%;
+    font-size: 0.9rem;
+    background: #e9ecef;
+    border-bottom: thin solid rgba(0, 0, 0, 0.26);
+  }
+
+  .td[data-title],
+  [data-page^='admin-status-realtime'] .td[id] {
+    text-align: left;
+  }
+
+  .td[data-title]::before {
+    display: block;
+  }
+
+  .cbi-button + .cbi-button {
+    margin-left: 0;
+  }
+
+  .td.cbi-section-actions > * > *,
+  .td.cbi-section-actions > * > form > * {
+    margin: 2.1px 3px;
+  }
+
+  .Firewall form {
+    position: static !important;
+    margin: 0 0 2rem 0;
+    padding: 2rem;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 2px 0 rgba(0, 0, 0, 0.12);
+  }
+
+  .Firewall form input {
+    width: 100% !important;
+    margin: 0;
+    margin-top: 1rem;
+  }
+
+  .Firewall .center,
+  .Firewall .center::before {
+    text-align: left !important;
+  }
+
+  .commandbox {
+    width: 100% !important;
+    margin-left: 0 !important;
+  }
+
+  .btn:not(button),
+  .cbi-button {
+    font-size: 0.8rem;
+  }
+}
+
+.pull-right {
+  float: right;
+}
+
+#xhr_poll_status {
+  display: flex;
+  margin-left: 0.5rem;
+
+  * {
+    color: #fff;
+  }
+}
+
+[data-page^='admin-system-commands'] .panel-title,
+[data-page^='command-cfg'] .mobile-hide,
+[data-page^='command-cfg'] .showSide {
+  display: none;
+}
+
+header {
+  position: relative;
+  padding: 0;
+  color: #fff;
+  color: var(--header-color);
+
+  &.bg-primary {
+    background-color: #5e72e4 !important;
+    background-color: var(--primary) !important;
+  }
+
+  &::after {
+    position: absolute;
+    width: 100%;
+    height: 2rem;
+    background-color: #5e72e4 !important;
+    background-color: var(--primary) !important;
+    content: '';
+  }
+
+  .fill {
+    display: flex;
+    padding: 0.8rem 0;
+    border-bottom: 0 solid rgba(255, 255, 255, 0.08) !important;
+
+    .container {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      height: 2rem;
+      padding: 0 1.25rem;
+
+      // .flex1 {
+      //   flex: 1;
+
+      .showSide {
+        display: none;
+        color: #fff;
+        font-size: 1.4rem;
+
+        &:hover {
+          text-decoration: none;
+        }
+
+        // }
+
+        .brand {
+          display: none;
+          padding-left: 1rem;
+          color: #fff;
+          font-size: 1.5rem;
+          font-family: 'TypoGraphica';
+          text-decoration: none;
+          vertical-align: text-bottom;
+          cursor: default;
+        }
+      }
+
+      .pull-right {
+        display: flex;
+        float: right;
+        margin-top: 0;
+      }
+    }
+
+    .status {
+      span {
+        display: inline-block;
+        margin: 0 0.25rem;
+        padding: 0.3rem 0.8rem;
+        font-weight: bold;
+        font-size: 0.8rem;
+        white-space: nowrap;
+        text-transform: uppercase;
+        text-decoration: none;
+        text-shadow: none;
+        border-radius: 4px;
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 2px 0 rgba(0, 0, 0, 0.12);
+        cursor: pointer;
+        transition: all 0.3s;
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+
+      span[data-indicator='poll-status'] {
+        color: #32325d;
+        background-color: #fff;
+      }
+
+      span[data-style='active'] {
+        background-color: var(--green);
+      }
+
+      span[data-style='inactive'] {
+        color: #fff !important;
+        background-color: #32325d;
+      }
+    }
+  }
+}
+
+.main-right > #maincontent {
+  position: relative;
+  z-index: 50;
+}
+
+.cbi-modal .cbi-section,
+.cbi-section .cbi-section {
+  padding: 0;
+  box-shadow: none;
+}
+
+.cbi-section-descr:not(:empty) {
+  padding: 1rem 1.25rem 0 1.25rem;
+  font-size: small;
+  line-height: 1.5;
+}
+
+.cbi-section > legend {
+  display: none !important;
+}
+
+fieldset > fieldset,
+.cbi-section > .cbi-section {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-shadow: none;
+}
+
+.cbi-section > h3:first-child,
+.panel-title {
+  display: block;
+  width: 100%;
+  margin: 0;
+  margin-bottom: 0;
+  padding: 0.8755rem 1.25rem;
+  color: #32325d;
+  color: var(--gray-dark);
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.cbi-section > h3:first-child,
+.cbi-section > h4:first-child,
+.cbi-section > p:first-child,
+[data-tab-title] > h3:first-child,
+[data-tab-title] > h4:first-child,
+[data-tab-title] > p:first-child {
+  padding: 1rem 1.25rem;
+}
+
+.cbi-section p {
+  padding: 1rem;
+}
+
+.table > .tr > .th.cbi-section-table-cell {
+  padding: 0.5rem;
+}
+
+.container > .cbi-section:first-of-type > .table[width='100%'] > .tr > .td {
+  padding: 0.6rem;
+}
+
+.cbi-section-table-cell {
+  flex: 1 1 auto;
+  align-self: flex-end;
+  line-height: 1.1;
+}
+
+tr > td,
+tr > th,
+.tr > .td,
+.tr > .th,
+.cbi-section-table-row::before,
+#cbi-wireless > #wifi_assoclist_table > .tr:nth-child(2) {
+  padding: 1.1em 1.25rem;
+  border-top: thin solid #ddd;
+}
+
+#cbi-wireless .td,
+#cbi-network .tr:first-child > .td,
+.table[width='100%'] > .tr:first-child > .td,
+[data-page='admin-network-diagnostics'] .tr > .td,
+.tr.table-titles > .th,
+.tr.cbi-section-table-titles > .th {
+  padding: 1.1em 1.25rem;
+  line-height: 1.3rem;
+  background-color: #f6f9fc;
+  border-top: 0 !important;
+}
+
+.table[width='100%'] > .tr:first-child > .td {
+  margin: auto 0;
+}
+
+.cbi-section-table-row {
+  margin-bottom: 1rem;
+  text-align: center !important;
+  background: #f4f4f4;
+}
+
+.cbi-section-table-row:last-child {
+  margin-bottom: 0;
+}
+
+.cbi-section-table-row > .cbi-value-field .cbi-dropdown,
+.cbi-section-table-row > .cbi-value-field .cbi-input-select,
+.cbi-section-table-row > .cbi-value-field .cbi-input-text,
+.cbi-section-table-row > .cbi-value-field .cbi-input-password {
+  width: 100%;
+}
+
+.cbi-section-table-row > .cbi-value-field .cbi-input-text,
+.cbi-section-table-row > .cbi-value-field .cbi-input-password {
+  min-width: 80px;
+}
+
+.cbi-section-table-row > .cbi-value-field [data-dynlist] > input,
+.cbi-section-table-row > .cbi-value-field input.cbi-input-password {
+  width: calc(100% - 1.5rem);
+}
+
+.cbi-section-table-row .td {
+  text-align: center !important;
+}
+
+.cbi-section-node {
+  padding: 1rem 0;
+}
+
+.cbi-section .cbi-section-remove:nth-of-type(2n),
+.container > .cbi-section .cbi-section-node:nth-of-type(2n) {
+  background-color: #f9f9f9;
+}
+
+.cbi-section[id] .cbi-section-remove:nth-of-type(4n + 3),
+.cbi-section[id] .cbi-section-node:nth-of-type(4n + 4) {
+  background-color: #f9f9f9;
+}
+
+.cbi-section-node-tabbed {
+  margin-top: 0;
+  padding: 0;
+  border: 0 solid #d4d4d4;
+  border-radius: 0.375rem;
+}
+
+.cbi-section-table-row > .cbi-value-field .cbi-dropdown {
+  min-width: 3rem;
+}
+
+.cbi-section-create {
+  display: inline-flex;
+  align-items: center;
+  margin: 0.25rem 1.25rem;
+}
+
+.cbi-section-create > * {
+  margin: 0.5rem 0;
+}
+
+.cbi-section-remove {
+  padding: 0.5rem;
+}
+
+.cbi-tabmenu + .cbi-section {
+  margin-top: 0;
+}
+
+.panel-title {
+  display: block;
+  width: 100%;
+  margin: 0;
+  margin-bottom: 0;
+  padding: 0.8755rem 1.25rem;
+  color: #32325d;
+  font-weight: bold;
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+#maincontent > .container {
+  margin: -20px 1.25rem 1rem 1.25rem;
+}
+
+.cbi-section,
+.cbi-section-error,
+#iptables,
+.Firewall form,
+#cbi-network > .cbi-section-node,
+#cbi-wireless > .cbi-section-node,
+#cbi-wireless > #wifi_assoclist_table,
+[data-tab-title],
+[data-page^='admin-system-admin']:not(.node-main-login) .cbi-map:not(#cbi-dropbear),
+[data-page='admin-system-opkg'] #maincontent > .container {
+  min-width: inherit;
+  margin: 1.25rem 0;
+  padding: 0;
+  font-weight: normal;
+  font-family: inherit;
+  font-style: normal;
+  line-height: normal;
+  background-color: #fff;
+  border: 0;
+  border-radius: 0.375rem;
+  box-shadow: 0 0 1rem 0 rgba(136, 152, 170, 0.15);
+}
+
+h2 {
+  display: block;
+  margin: 0 0 1rem 0;
+  padding: 1rem 1.5rem;
+  color: #32325d;
+  font-weight: bold;
+  font-size: 1.5em;
+  // font-size: 1.25rem;
+  letter-spacing: 0.1rem;
+  background: #fff;
+  border-radius: 0.375rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.03);
+  margin-block-start: 0.83em;
+  margin-block-end: 0.83em;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+}
+
+[data-page^='admin-system-admin']:not(.node-main-login) .cbi-map:not(#cbi-dropbear),
+[data-page='admin-system-opkg'] #maincontent > .container {
+  margin-top: 2rem;
+  padding-top: 0.1rem;
+}
+
+[data-page='admin-system-opkg'] #maincontent > .container {
+  margin: 0 1.25rem 1rem 1.25rem;
+  margin-bottom: 1rem;
 }
