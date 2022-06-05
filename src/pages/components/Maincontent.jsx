@@ -25,7 +25,7 @@ export default function Maincontent(props) {
   return (
     <>
       <h2 name="content" style={{ display: props.noContent ? 'none' : 'block' }}>
-        {props.title}
+        {props.content}
       </h2>
       <div className="refresh">
         <Button
