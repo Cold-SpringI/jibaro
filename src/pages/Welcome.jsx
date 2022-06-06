@@ -128,15 +128,15 @@ const Welcome = () => {
   return (
     <>
       <div className="main">
-        <div className="main-left">
+        {/* <div className="main-left">
           <div className="sidenav-header d-flex align-items-center">
             <a className="brand">OpenWrt</a>
           </div>
           <ul className="nav" ref={nav}>
             {menuElement}
           </ul>
-        </div>
-        <div className="main-right">
+        </div> */}
+        {/* <div className="main-right">
           <header className="bg-primary">
             <div className="fill">
               <div className="container" />
@@ -155,7 +155,7 @@ const Welcome = () => {
               <Maincontent panelTitle={'DHCP分配'} lable={systemArr} noContent />
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   );

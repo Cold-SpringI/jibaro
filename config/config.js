@@ -3,6 +3,7 @@ import { defineConfig } from 'umi';
 import defaultSettings from './defaultSettings';
 import proxy from './proxy';
 import routes from './routes';
+
 const { REACT_APP_ENV } = process.env;
 export default defineConfig({
   hash: true,
@@ -13,8 +14,9 @@ export default defineConfig({
   layout: {
     // https://umijs.org/zh-CN/plugins/plugin-layout
     locale: true,
-    siderWidth: 208,
+    siderWidth: 230,
     ...defaultSettings,
+
   },
   // https://umijs.org/zh-CN/plugins/plugin-locale
   locale: {

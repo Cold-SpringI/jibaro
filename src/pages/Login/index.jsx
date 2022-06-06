@@ -3,17 +3,8 @@ import { Alert, message } from 'antd';
 import { useState } from 'react';
 import { history, useIntl, useModel } from 'umi';
 import './index.less';
+import logo from '../../../img/argon.svg'
 
-const LoginMessage = ({ content }) => (
-  <Alert
-    style={{
-      marginBottom: 24,
-    }}
-    message={content}
-    type="error"
-    showIcon
-  />
-);
 
 const Login = () => {
   const [userLoginState, setUserLoginState] = useState({});
@@ -74,11 +65,11 @@ const Login = () => {
   const { status, type: loginType } = userLoginState;
   return (
     <>
-      <div className="main">
+      <div className="loginMain">
         <div className="login-container">
           <div className="login-form">
-            <a className="brand" href="/">
-              <img src="http://192.168.1.1/luci-static/argon/img/argon.svg" className="icon" />
+            <a className="brand">
+              <img className="icon" src={logo} />
               <span className="brand-text">OpenWrt</span>
             </a>
             <form

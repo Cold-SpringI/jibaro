@@ -60,7 +60,7 @@
     .nav {
       margin-top: 0.5rem;
 
-      > li > a:first-child {
+      >li>a:first-child {
         position: relative;
         display: block;
         margin: 0.1rem 0.5rem 0.1rem 0.5rem;
@@ -356,20 +356,20 @@
   }
 }
 
-body[class*='node-'] > .main > .main-left > .nav > .slide > .menu::before {
+body[class*='node-']>.main>.main-left>.nav>.slide>.menu::before {
   transition: transform 0.1s ease-in-out;
 }
 
-body[class*='node-'] > .main > .main-left > .nav > .slide > .menu.active::before {
+body[class*='node-']>.main>.main-left>.nav>.slide>.menu.active::before {
   transition: transform 0.2s ease-in-out;
 }
 
-.main > .main-left[style*='overflow: hidden'] > .nav > .slide > .menu::before {
+.main>.main-left[style*='overflow: hidden']>.nav>.slide>.menu::before {
   display: none;
 }
 
 @media screen and (max-width: 1600px) {
-  header > .fill > .container > #logo {
+  header>.fill>.container>#logo {
     margin: 0 2.5rem 0 0.5rem;
   }
 
@@ -410,13 +410,13 @@ body[class*='node-'] > .main > .main-left > .nav > .slide > .menu.active::before
     font-size: small;
   }
 
-  .node-admin-status > .main fieldset li > a {
+  .node-admin-status>.main fieldset li>a {
     padding: 0.3rem 0.6rem;
   }
 }
 
 @media screen and (max-width: 1366px) {
-  header > .fill > .container {
+  header>.fill>.container {
     cursor: default;
   }
 
@@ -428,8 +428,8 @@ body[class*='node-'] > .main > .main-left > .nav > .slide > .menu.active::before
     width: calc(100% - 13rem);
   }
 
-  .tabs > li > a,
-  .cbi-tabmenu > li > a {
+  .tabs>li>a,
+  .cbi-tabmenu>li>a {
     padding: 0.2rem 0.8rem;
   }
 
@@ -458,15 +458,15 @@ body[class*='node-'] > .main > .main-left > .nav > .slide > .menu.active::before
     min-width: 4rem;
   }
 
-  .main > .main-left > .nav > li,
-  .main > .main-left > .nav > li > a,
-  .main .main-left .nav > li > a:first-child,
-  .main > .main-left > .nav > .slide > .menu,
-  .main > .main-left > .nav > li > [data-title='Logout'] {
+  .main>.main-left>.nav>li,
+  .main>.main-left>.nav>li>a,
+  .main .main-left .nav>li>a:first-child,
+  .main>.main-left>.nav>.slide>.menu,
+  .main>.main-left>.nav>li>[data-title='Logout'] {
     font-size: 0.9rem;
   }
 
-  .main > .main-left > .nav > .slide > .slide-menu > li > a {
+  .main>.main-left>.nav>.slide>.slide-menu>li>a {
     font-size: 0.7rem;
   }
 
@@ -496,11 +496,11 @@ body[class*='node-'] > .main > .main-left > .nav > .slide > .menu.active::before
 }
 
 @media screen and (max-width: 1152px) {
-  header > .fill > .container > #logo {
+  header>.fill>.container>#logo {
     display: none;
   }
 
-  header > .fill > .container > .brand {
+  header>.fill>.container>.brand {
     position: relative;
   }
 
@@ -509,7 +509,7 @@ body[class*='node-'] > .main > .main-left > .nav > .slide > .menu.active::before
     overflow-y: visible;
   }
 
-  .main > .loading > span {
+  .main>.loading>span {
     top: 25%;
   }
 
@@ -527,7 +527,7 @@ body[class*='node-'] > .main > .main-left > .nav > .slide > .menu.active::before
     visibility: hidden;
   }
 
-  .node-main-login > .main .cbi-value-title {
+  .node-main-login>.main .cbi-value-title {
     text-align: left;
   }
 
@@ -550,8 +550,8 @@ body[class*='node-'] > .main > .main-left > .nav > .slide > .menu.active::before
     min-width: 13rem;
   }
 
-  #diag-rc-output > pre,
-  #command-rc-output > pre,
+  #diag-rc-output>pre,
+  #command-rc-output>pre,
   [data-page='admin-services-wol'] .notice code {
     font-size: 1rem;
   }
@@ -574,7 +574,7 @@ body[class*='node-'] > .main > .main-left > .nav > .slide > .menu.active::before
     flex-wrap: wrap;
   }
 
-  .Overview .table[width='100%'] > .tr {
+  .Overview .table[width='100%']>.tr {
     flex-wrap: nowrap;
   }
 
@@ -582,10 +582,10 @@ body[class*='node-'] > .main > .main-left > .nav > .slide > .menu.active::before
     border-bottom: thin solid #ddd;
   }
 
-  .tr.placeholder > .td,
-  #cbi-firewall .tr > .td,
-  #cbi-network .tr:nth-child(2) > .td,
-  .cbi-section #wifi_assoclist_table .tr > .td {
+  .tr.placeholder>.td,
+  #cbi-firewall .tr>.td,
+  #cbi-network .tr:nth-child(2)>.td,
+  .cbi-section #wifi_assoclist_table .tr>.td {
     border-top: 0;
   }
 
@@ -604,7 +604,7 @@ body[class*='node-'] > .main > .main-left > .nav > .slide > .menu.active::before
     word-wrap: normal;
   }
 
-  .td [data-dynlist] > input,
+  .td [data-dynlist]>input,
   .td input.cbi-input-password {
     width: calc(100% - 1.5rem);
   }
@@ -667,12 +667,12 @@ body[class*='node-'] > .main > .main-left > .nav > .slide > .menu.active::before
     display: block;
   }
 
-  .cbi-button + .cbi-button {
+  .cbi-button+.cbi-button {
     margin-left: 0;
   }
 
-  .td.cbi-section-actions > * > *,
-  .td.cbi-section-actions > * > form > * {
+  .td.cbi-section-actions>*>*,
+  .td.cbi-section-actions>*>form>* {
     margin: 2.1px 3px;
   }
 
@@ -735,14 +735,14 @@ header {
     background-color: var(--primary) !important;
   }
 
-  &::after {
-    position: absolute;
-    width: 100%;
-    height: 2rem;
-    background-color: #5e72e4 !important;
-    background-color: var(--primary) !important;
-    content: '';
-  }
+  // &::after {
+  //   position: absolute;
+  //   width: 100%;
+  //   height: 2rem;
+  //   background-color: #5e72e4 !important;
+  //   background-color: var(--primary) !important;
+  //   content: '';
+  // }
 
   .fill {
     display: flex;
@@ -827,7 +827,7 @@ header {
   }
 }
 
-.main-right > #maincontent {
+.main-right>#maincontent {
   position: relative;
   z-index: 50;
 }
@@ -844,19 +844,19 @@ header {
   line-height: 1.5;
 }
 
-.cbi-section > legend {
+.cbi-section>legend {
   display: none !important;
 }
 
-fieldset > fieldset,
-.cbi-section > .cbi-section {
+fieldset>fieldset,
+.cbi-section>.cbi-section {
   margin: 0;
   padding: 0;
   border: 0;
   box-shadow: none;
 }
 
-.cbi-section > h3:first-child,
+.cbi-section>h3:first-child,
 .panel-title {
   display: block;
   width: 100%;
@@ -869,12 +869,12 @@ fieldset > fieldset,
   line-height: 1;
 }
 
-.cbi-section > h3:first-child,
-.cbi-section > h4:first-child,
-.cbi-section > p:first-child,
-[data-tab-title] > h3:first-child,
-[data-tab-title] > h4:first-child,
-[data-tab-title] > p:first-child {
+.cbi-section>h3:first-child,
+.cbi-section>h4:first-child,
+.cbi-section>p:first-child,
+[data-tab-title]>h3:first-child,
+[data-tab-title]>h4:first-child,
+[data-tab-title]>p:first-child {
   padding: 1rem 1.25rem;
 }
 
@@ -882,11 +882,11 @@ fieldset > fieldset,
   padding: 1rem;
 }
 
-.table > .tr > .th.cbi-section-table-cell {
+.table>.tr>.th.cbi-section-table-cell {
   padding: 0.5rem;
 }
 
-.container > .cbi-section:first-of-type > .table[width='100%'] > .tr > .td {
+.container>.cbi-section:first-of-type>.table[width='100%']>.tr>.td {
   padding: 0.6rem;
 }
 
@@ -896,29 +896,29 @@ fieldset > fieldset,
   line-height: 1.1;
 }
 
-tr > td,
-tr > th,
-.tr > .td,
-.tr > .th,
+tr>td,
+tr>th,
+.tr>.td,
+.tr>.th,
 .cbi-section-table-row::before,
-#cbi-wireless > #wifi_assoclist_table > .tr:nth-child(2) {
+#cbi-wireless>#wifi_assoclist_table>.tr:nth-child(2) {
   padding: 1.1em 1.25rem;
   border-top: thin solid #ddd;
 }
 
 #cbi-wireless .td,
-#cbi-network .tr:first-child > .td,
-.table[width='100%'] > .tr:first-child > .td,
-[data-page='admin-network-diagnostics'] .tr > .td,
-.tr.table-titles > .th,
-.tr.cbi-section-table-titles > .th {
+#cbi-network .tr:first-child>.td,
+.table[width='100%']>.tr:first-child>.td,
+[data-page='admin-network-diagnostics'] .tr>.td,
+.tr.table-titles>.th,
+.tr.cbi-section-table-titles>.th {
   padding: 1.1em 1.25rem;
   line-height: 1.3rem;
   background-color: #f6f9fc;
   border-top: 0 !important;
 }
 
-.table[width='100%'] > .tr:first-child > .td {
+.table[width='100%']>.tr:first-child>.td {
   margin: auto 0;
 }
 
@@ -932,20 +932,20 @@ tr > th,
   margin-bottom: 0;
 }
 
-.cbi-section-table-row > .cbi-value-field .cbi-dropdown,
-.cbi-section-table-row > .cbi-value-field .cbi-input-select,
-.cbi-section-table-row > .cbi-value-field .cbi-input-text,
-.cbi-section-table-row > .cbi-value-field .cbi-input-password {
+.cbi-section-table-row>.cbi-value-field .cbi-dropdown,
+.cbi-section-table-row>.cbi-value-field .cbi-input-select,
+.cbi-section-table-row>.cbi-value-field .cbi-input-text,
+.cbi-section-table-row>.cbi-value-field .cbi-input-password {
   width: 100%;
 }
 
-.cbi-section-table-row > .cbi-value-field .cbi-input-text,
-.cbi-section-table-row > .cbi-value-field .cbi-input-password {
+.cbi-section-table-row>.cbi-value-field .cbi-input-text,
+.cbi-section-table-row>.cbi-value-field .cbi-input-password {
   min-width: 80px;
 }
 
-.cbi-section-table-row > .cbi-value-field [data-dynlist] > input,
-.cbi-section-table-row > .cbi-value-field input.cbi-input-password {
+.cbi-section-table-row>.cbi-value-field [data-dynlist]>input,
+.cbi-section-table-row>.cbi-value-field input.cbi-input-password {
   width: calc(100% - 1.5rem);
 }
 
@@ -958,7 +958,7 @@ tr > th,
 }
 
 .cbi-section .cbi-section-remove:nth-of-type(2n),
-.container > .cbi-section .cbi-section-node:nth-of-type(2n) {
+.container>.cbi-section .cbi-section-node:nth-of-type(2n) {
   background-color: #f9f9f9;
 }
 
@@ -974,7 +974,7 @@ tr > th,
   border-radius: 0.375rem;
 }
 
-.cbi-section-table-row > .cbi-value-field .cbi-dropdown {
+.cbi-section-table-row>.cbi-value-field .cbi-dropdown {
   min-width: 3rem;
 }
 
@@ -984,7 +984,7 @@ tr > th,
   margin: 0.25rem 1.25rem;
 }
 
-.cbi-section-create > * {
+.cbi-section-create>* {
   margin: 0.5rem 0;
 }
 
@@ -992,7 +992,7 @@ tr > th,
   padding: 0.5rem;
 }
 
-.cbi-tabmenu + .cbi-section {
+.cbi-tabmenu+.cbi-section {
   margin-top: 0;
 }
 
@@ -1008,7 +1008,7 @@ tr > th,
   line-height: 1;
 }
 
-#maincontent > .container {
+#maincontent>.container {
   margin: -20px 1.25rem 1rem 1.25rem;
 }
 
@@ -1016,12 +1016,12 @@ tr > th,
 .cbi-section-error,
 #iptables,
 .Firewall form,
-#cbi-network > .cbi-section-node,
-#cbi-wireless > .cbi-section-node,
-#cbi-wireless > #wifi_assoclist_table,
+#cbi-network>.cbi-section-node,
+#cbi-wireless>.cbi-section-node,
+#cbi-wireless>#wifi_assoclist_table,
 [data-tab-title],
 [data-page^='admin-system-admin']:not(.node-main-login) .cbi-map:not(#cbi-dropbear),
-[data-page='admin-system-opkg'] #maincontent > .container {
+[data-page='admin-system-opkg'] #maincontent>.container {
   min-width: inherit;
   margin: 1.25rem 0;
   padding: 0;
@@ -1054,12 +1054,12 @@ h2 {
 }
 
 [data-page^='admin-system-admin']:not(.node-main-login) .cbi-map:not(#cbi-dropbear),
-[data-page='admin-system-opkg'] #maincontent > .container {
+[data-page='admin-system-opkg'] #maincontent>.container {
   margin-top: 2rem;
   padding-top: 0.1rem;
 }
 
-[data-page='admin-system-opkg'] #maincontent > .container {
+[data-page='admin-system-opkg'] #maincontent>.container {
   margin: 0 1.25rem 1rem 1.25rem;
   margin-bottom: 1rem;
 }

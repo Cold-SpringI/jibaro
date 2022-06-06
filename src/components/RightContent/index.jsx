@@ -20,16 +20,17 @@ const GlobalHeaderRight = () => {
 
   return (
     <Space className={className}>
-      <span
+      {/* <span
         className={styles.action}
         onClick={() => {
           window.open('https://pro.ant.design/docs/getting-started');
         }}
       >
         <QuestionCircleOutlined />
-      </span>
-      <Avatar />
+      </span> */}
       <SelectLang className={styles.action} />
+
+      <Avatar />
     </Space>
   );
 };
