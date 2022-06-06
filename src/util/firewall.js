@@ -1,4 +1,4 @@
-import { uci } from './uci'
+import {uci} from './uci'
 
 const firewall = {
   zones: [],
@@ -111,12 +111,12 @@ class Forward {
   }
 }
 
-firewall.loadFromLocal = function () {
+firewall.loadFromLocal = function() {
   this.zones = uci.sections('firewall', 'zone').map(s => new Zone(s['.name']));
   this.forwards = uci.sections('firewall', 'forwarding').map(s => new Forward(s['.name']));
 }
 
-firewall.load = function (local) {
+firewall.load = function(local) {
   if (local) {
     this.loadFromLocal();
     return;
@@ -130,7 +130,7 @@ firewall.load = function (local) {
   });
 }
 
-firewall.findZoneByNetwork = function (net) {
+firewall.findZoneByNetwork = function(net) {
   for (let i = 0; i < this.zones.length; i++) {
     const zone = this.zones[i];
     const nets = zone.network();
@@ -140,7 +140,7 @@ firewall.findZoneByNetwork = function (net) {
   return undefined;
 }
 
-firewall.findZoneByName = function (name) {
+firewall.findZoneByName = function(name) {
   for (let i = 0; i < this.zones.length; i++) {
     const zone = this.zones[i];
     if (zone.name() === name)
@@ -149,7 +149,7 @@ firewall.findZoneByName = function (name) {
   return undefined;
 }
 
-firewall.findZoneBySid = function (sid) {
+firewall.findZoneBySid = function(sid) {
   for (let i = 0; i < this.zones.length; i++) {
     const zone = this.zones[i];
     if (zone.sid === sid)
@@ -158,7 +158,7 @@ firewall.findZoneBySid = function (sid) {
   return undefined;
 }
 
-firewall.createZone = function (name) {
+firewall.createZone = function(name) {
   const sid = uci.add('firewall', 'zone');
   const z = new Zone(sid);
   this.zones.push(z);
@@ -171,4 +171,8 @@ firewall.createZone = function (name) {
   return z;
 }
 
-export default firewall;
+export default {
+  install(Vue) {
+    Vue.prototype.$firewall = firewall;
+  }
+}

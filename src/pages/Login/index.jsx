@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { history, useIntl, useModel } from 'umi';
 import './index.less';
 import logo from '../../../img/argon.svg'
+// import ubus from '@/util/ubus';
+import { ubus } from '@/util/ubus';
 
 
 const Login = () => {
@@ -62,6 +64,16 @@ const Login = () => {
     }
   };
 
+  const ubusLogin = (param) => {
+    ubus.call('session', 'login', { username: param.username, password: param.password }).then(r => {
+      // this.startHeartbeat();
+      sessionStorage.setItem('sid', r.ubus_rpc_session);
+      // resolve(true);
+    }).catch(() => {
+      // resolve(false);
+    });
+  }
+
   const { status, type: loginType } = userLoginState;
   return (
     <>
@@ -79,7 +91,15 @@ const Login = () => {
                 e.preventDefault();
                 const username = e.target[0].value;
                 const password = e.target[1].value;
-                await handleSubmit({ username, password });
+                ubusLogin({ username, password })
+                // await handleSubmit({ username, password });
+                // ubus.call('session', 'login', {username, password}).then(r => {
+                //   this.startHeartbeat();
+                //   sessionStorage.setItem('sid', r.ubus_rpc_session);
+                //   resolve(true);
+                // }).catch(() => {
+                //   resolve(false);
+                // });
               }}
             >
               <div className="errorbox" style={{ display: loginOk ? 'none' : 'block' }}>

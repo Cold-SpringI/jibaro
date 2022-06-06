@@ -1,5 +1,6 @@
-(function() {
-  if (typeof(window.oui) !== 'undefined')
+const oui = function () {
+  // debugger
+  if (typeof (window.oui) !== 'undefined')
     return;
   window.oui = {
     isEmptyArray(v) {
@@ -7,16 +8,16 @@
     },
 
     isEqual(obj1, obj2) {
-      if (typeof(obj1) === 'undefined' || typeof(obj2) === 'undefined')
+      if (typeof (obj1) === 'undefined' || typeof (obj2) === 'undefined')
         return obj1 === obj2;
 
       const v1 = obj1.valueOf();
       const v2 = obj2.valueOf();
 
-      if (typeof(v1) !== typeof(v2))
+      if (typeof (v1) !== typeof (v2))
         return false;
 
-      if (typeof(v1) === 'object') {
+      if (typeof (v1) === 'object') {
         if (Array.isArray(v1)) {
           if (v1.length !== v2.length)
             return false;
@@ -40,8 +41,10 @@
     },
 
     isPromise(obj) {
-      return typeof(obj) === 'object' && obj !== null &&
-        typeof(obj.then) === 'function' && typeof(obj.catch) === 'function';
+      return typeof (obj) === 'object' && obj !== null &&
+        typeof (obj.then) === 'function' && typeof (obj.catch) === 'function';
     }
   }
-})()
+}
+
+export default oui

@@ -1,6 +1,9 @@
 import axios from 'axios'
 import { session } from './session'
-import router from '../router'
+// import router from '../router'
+import oui from './oui'
+
+oui()
 
 export const ubus = {
   id: 1
@@ -20,7 +23,7 @@ const ubusErrorInfo = {
   10: 'Connection failed'
 }
 
-ubus._call = function (reqs, timeout, catchMethod = false) {
+ubus._call = function (reqs, timeout) {
   if (typeof (timeout) !== 'number' || timeout < 1)
     timeout = 10;
 
@@ -83,11 +86,10 @@ ubus._call = function (reqs, timeout, catchMethod = false) {
       resolve(data);
     }).catch(error => {
       console.log(1)
-      if (!catchMethod) {
-        router.replace({
-          path: '/login'
-        })
-      }
+      // router.replace({
+      //   path: '/login'
+      // })
+
       reject(error);
     });
   });
@@ -107,10 +109,10 @@ ubus._buildRequest = function (object, method, params) {
   return req;
 }
 
-ubus.call = function (object, method, params, timeout, catchMethod) {
+ubus.call = function (object, method, params, timeout) {
   const req = this._buildRequest(object, method, params);
 
-  return this._call(req, timeout, catchMethod);
+  return this._call(req, timeout);
 }
 
 ubus.callBatch = function (batchs, timeout) {
@@ -136,4 +138,3 @@ ubus.list = function () {
   return this._call(req);
 }
 
-export default ubus;

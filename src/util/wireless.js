@@ -1,8 +1,8 @@
-import { ubus } from './ubus'
+import {ubus} from './ubus'
 
-export default wireless = {}
+const wireless = {}
 
-wireless.getDevices = function () {
+wireless.getDevices = function() {
   return new Promise(resolve => {
     if (this.devices) {
       resolve(this.devices);
@@ -16,7 +16,7 @@ wireless.getDevices = function () {
   });
 }
 
-wireless.getAssoclist = function () {
+wireless.getAssoclist = function() {
   return new Promise(resolve => {
     this.getDevices().then(devices => {
       const batch = [];
@@ -27,7 +27,7 @@ wireless.getAssoclist = function () {
       }
 
       devices.forEach(dev => {
-        batch.push(['iwinfo', 'assoclist', { device: dev }]);
+        batch.push(['iwinfo', 'assoclist', {device: dev}]);
       });
 
       ubus.callBatch(batch).then(rs => {
@@ -41,4 +41,10 @@ wireless.getAssoclist = function () {
       });
     });
   });
+}
+
+export default {
+  install(Vue) {
+    Vue.prototype.$wireless = wireless;
+  }
 }

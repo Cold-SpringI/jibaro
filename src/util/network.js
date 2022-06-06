@@ -1,4 +1,4 @@
-import { ubus } from './ubus'
+import {ubus} from './ubus'
 import i18n from '@/i18n';
 
 const network = {
@@ -134,7 +134,7 @@ network.load = function () {
             const devices = r[0];
 
             this.devices = Object.keys(devices).map(name => {
-                return { name: name, ...devices[name] };
+                return {name: name, ...devices[name]};
             }).filter(d => d.name !== 'lo');
 
             this.interfaces = r[1].interfaces.map(iface => new Interface(iface)).filter(i => i.name !== 'loopback');
@@ -165,7 +165,7 @@ network.getAllInterfaces = function () {
         let map = interfaces.map(it => {
             let value = it.name;
             let label = i18n.te(`interface_internationalize_${value}`) ? i18n.t(`interface_internationalize_${value}`) : value;
-            return { label, value }
+            return {label,value}
         });
         return map;
     })
@@ -186,4 +186,8 @@ network.getDevices = function () {
     return this.devices;
 }
 
-export default network;
+export default {
+    install(Vue) {
+        Vue.prototype.$network = network;
+    }
+}

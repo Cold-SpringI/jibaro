@@ -1,7 +1,10 @@
 import { session } from './session'
 import { ubus } from './ubus'
+import oui from './oui'
 
-export default uci = {
+oui()
+
+export const uci = {
   state: {
     applying: false,
     newidx: 0,
@@ -18,6 +21,12 @@ const isEmptyArray = window.oui.isEmptyArray
 
 uci.load = function (conf, value) {
   return new Promise(resolve => {
+    // if(!value){
+    //   if (this.state.values[conf]) {
+    //     resolve();
+    //     return;
+    //   }
+    // }
     ubus.call('uci', 'get', { config: conf }).then(r => {
       this.state.values[conf] = r.values;
       resolve();
@@ -369,3 +378,8 @@ uci.writable = function (conf) {
   return session.hasACL('uci', conf, 'write');
 }
 
+export default {
+  install(Vue) {
+    Vue.prototype.$uci = uci;
+  }
+}
