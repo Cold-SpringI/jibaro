@@ -123,7 +123,7 @@ export default {
       res.send({
         status: 'ok',
         type,
-        currentAuthority: 'root',
+        // currentAuthority: 'root',
       });
       access = 'root';
       return;

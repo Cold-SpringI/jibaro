@@ -2,10 +2,11 @@ import RightContent from '@/components/RightContent';
 import { PageLoading, SettingDrawer } from '@ant-design/pro-layout';
 import { history } from 'umi';
 import defaultSettings from '../config/defaultSettings';
-import { currentUser as queryCurrentUser } from './services/ant-design-pro/api';
 import Logo from '../img/argon.svg'
 
 const loginPath = '/login';
+// const loginPath = '/';
+
 /** 获取用户信息比较慢的时候会展示一个 loading */
 
 export const initialStateConfig = {
@@ -15,20 +16,20 @@ export const initialStateConfig = {
  * @see  https://umijs.org/zh-CN/plugins/plugin-initial-state
  * */
 
-export async function getInitialState() {
-  const fetchUserInfo = async () => {
-    try {
-      const msg = await queryCurrentUser();
-      return msg.data;
-    } catch (error) {
-      history.push(loginPath);
-    }
+export function getInitialState() {
+  const fetchUserInfo = () => {
 
-    return undefined;
+    const sid = sessionStorage.getItem('sid')
+    if (sid) {
+      return { access: "admin", name: "admin" }
+    } else {
+      history.push(loginPath);
+      return undefined;
+    }
   }; // 如果不是登录页面，执行
 
   if (history.location.pathname !== loginPath) {
-    const currentUser = await fetchUserInfo();
+    const currentUser = fetchUserInfo();
     return {
       fetchUserInfo,
       currentUser,
