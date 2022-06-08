@@ -2,8 +2,6 @@ import { outLogin } from '@/services/ant-design-pro/api';
 import { LogoutOutlined, SettingOutlined, UserOutlined } from '@ant-design/icons';
 import { Avatar, Menu, Spin } from 'antd';
 import { stringify } from 'querystring';
-import { useEffect } from 'react';
-import { useState } from 'react';
 import { useCallback } from 'react';
 import { history, useModel } from 'umi';
 import styles from './index.less';
@@ -20,17 +18,6 @@ const loginOut = async () => {
 
 const AvatarDropdown = ({ menu }) => {
   const { initialState, setInitialState } = useModel('@@initialState');
-  const [name, setName] = useState(null)
-  useEffect(() => {
-    if (!initialState) {
-      return loading;
-    }
-    const { currentUser } = initialState;
-    setName(currentUser.name)
-    if (!currentUser || !currentUser.name) {
-      return loading;
-    }
-  }, [initialState])
   const onMenuClick = useCallback(
     (event) => {
       const { key } = event;
@@ -56,18 +43,19 @@ const AvatarDropdown = ({ menu }) => {
       />
     </span>
   );
-  // const menuHeaderDropdown = (
-  //   <Menu className={styles.menu} selectedKeys={[]} onClick={onMenuClick}>
-  //     <Menu.Item key="logout">
-  //       <LogoutOutlined />
-  //       退出登录
-  //     </Menu.Item>
-  //   </Menu>
-  // );
+  if (!initialState) {
+    return loading;
+  }
+
+  const { currentUser } = initialState;
+  if (!currentUser || !currentUser.name) {
+    return loading;
+  }
   return (
     <div>
       <span className={`${styles.action} ${styles.account}`}>
-        <span className={`${styles.name} anticon`}>{name}</span>
+        {/* <Avatar size="small" className={styles.avatar} src={currentUser.avatar} alt="avatar" /> */}
+        <span className={`${styles.name} anticon`}>{currentUser.name}</span>
       </span>
     </div>
   );

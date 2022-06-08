@@ -23,14 +23,14 @@ const Login = () => {
   const fetchUserInfo = async (currentUser) => {
     const userInfo = await initialState?.fetchUserInfo?.();
     if (userInfo) {
-      await setInitialState(s => ({ ...s, currentUser }));
+      await setInitialState(s => ({ ...s, ...currentUser }));
     }
   };
   const ubusLogin = (param) => {
     setLoginOk(true);
     ubus.call('session', 'login', { username: param.username, password: param.password }).then(async (r) => {
       sessionStorage.setItem('sid', r.ubus_rpc_session);
-      await fetchUserInfo(r.data.username);
+      await fetchUserInfo({ currentUser: { name: r.data.username } });
       history.replace('/');
       return;
     }).catch((e) => {

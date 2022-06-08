@@ -46,6 +46,7 @@ export function getInitialState() {
 export const layout = ({ initialState, setInitialState }) => {
   let oncollapsed = false
   return {
+    // iconfontUrl:'',
     rightContentRender: () => <RightContent />,
     disableContentMargin: false,
     waterMarkProps: {

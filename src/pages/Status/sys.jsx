@@ -1,0 +1,103 @@
+import React from 'react'
+import Maincontent from '../components/maincontent'
+import { FormattedMessage } from 'umi';
+import { useIntl } from 'umi';
+import { ubus } from '@/util/ubus';
+import { useEffect } from 'react';
+import { useState } from 'react';
+import moment from 'moment';
+
+export default () => {
+    const intl = useIntl();
+    const [systemArr, setSysArr] = useState(null)
+    const [cpuUse, setCpuUse] = useState(null)
+    const [memUse, setMemUse] = useState(null)
+
+    const getStatic = async () => {
+        let staticData
+        await ubus.call("system.info", "static_get").then(rs => {
+            staticData = [
+                {
+                    name: intl.formatMessage({ id: 'pages.status.DeviceModel' }),
+                    value: rs.static.pmodel || '-'
+                },
+                {
+                    name: intl.formatMessage({ id: 'pages.status.SN' }),
+                    value: rs.static.sn || '-'
+                },
+                {
+                    name: intl.formatMessage({ id: 'pages.status.HardwareVersion' }),
+                    value: rs.static.hwversion || '-'
+                },
+                {
+                    name: intl.formatMessage({ id: 'pages.status.FirmwareVersion' }),
+                    value: rs.static.firmware || '-'
+                },
+                {
+                    name: intl.formatMessage({ id: 'pages.status.CompileTime' }),
+                    value: rs.static.build || '-'
+                },
+                {
+                    name: intl.formatMessage({ id: 'pages.status.GpsSupport' }),
+                    value: rs.static.gps === '1' ? intl.formatMessage({ id: 'pages.status.Yes' }) : intl.formatMessage({ id: 'pages.status.No' })
+                }
+            ]
+        })
+        return staticData
+    }
+
+    const getDynamic = (staticData) => {
+        ubus.call("system.info", "dynamic_get").then(rs => {
+            const time = moment.duration(rs.dynamic.run_time, 'seconds');
+            const hours = time.hours() + 'h ';
+            const minutes = time.minutes() + 'm ';
+            const seconds = time.seconds() + 's';
+            let run_time = hours + minutes + seconds
+            let dynamic = [
+                {
+                    // name: 'runTime',
+                    name: intl.formatMessage({ id: 'pages.status.runTime' }),
+
+                    value: run_time || '-'
+                },
+                {
+                    name: intl.formatMessage({ id: 'pages.status.SystemTime' }),
+                    value: rs.dynamic.system_time || '-'
+                },
+                {
+                    sat: rs.dynamic.sat || '-',
+                    sig: rs.dynamic.sig || '-',
+                    name: intl.formatMessage({ id: 'pages.status.Location' }),
+                    value: rs.dynamic.gps === '1' ? (rs.dynamic.lat && rs.dynamic.lon) ? (rs.dynamic.lon + ',' + rs.dynamic.lat) : '-' : intl.formatMessage({ id: 'pages.status.NotLocated' })
+                }
+            ]
+            setCpuUse(rs.dynamic.cpu_use / 100)
+            setMemUse(rs.dynamic.mem_use / 100)
+            setSysArr([...staticData, ...dynamic])
+
+        })
+    }
+    useEffect(async () => {
+        let staticData = await getStatic()
+        getDynamic(staticData)
+        const timer = setInterval(() => {
+            getDynamic(staticData)
+        }, 3000)
+        return () => {
+            clearInterval(timer)
+        }
+    }, [])
+    return (
+        <>
+            {/* <FormattedMessage id="navbar.lang" /> */}
+            <Maincontent
+                cpuUse={cpuUse === 0 ? 0.01 : cpuUse}
+                memUse={memUse === 0 ? 0.01 : memUse}
+                content={intl.formatMessage({ id: 'pages.status.SystemInformation' })}
+                // panelTitle={'System'}
+                lable={systemArr}
+            // tips={'系统相关信息'}
+            />
+        </>
+    )
+}
