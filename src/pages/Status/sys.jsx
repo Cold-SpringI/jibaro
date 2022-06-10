@@ -1,53 +1,52 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Maincontent from './Componenets/Maincontent';
 import { useIntl } from 'umi';
 import { ubus } from '@/util/ubus';
-import { useEffect } from 'react';
-import { useState } from 'react';
 import moment from 'moment';
 
 export default () => {
     const intl = useIntl();
     const [systemArr, setSysArr] = useState(null)
-    const [timer, setTimer] = useState(null)
+    const [haveStaticData, setHaveStaticData] = useState(null)
     const [cpuUse, setCpuUse] = useState(null)
     const [memUse, setMemUse] = useState(null)
 
-    const getStatic = async () => {
+    const getDynamic = () => {
         let staticData
-        await ubus.call("system.info", "static_get").then(rs => {
-            staticData = [
-                {
-                    name: intl.formatMessage({ id: 'pages.status.DeviceModel' }),
-                    value: rs.static.pmodel || '-'
-                },
-                {
-                    name: intl.formatMessage({ id: 'pages.status.SN' }),
-                    value: rs.static.sn || '-'
-                },
-                {
-                    name: intl.formatMessage({ id: 'pages.status.HardwareVersion' }),
-                    value: rs.static.hwversion || '-'
-                },
-                {
-                    name: intl.formatMessage({ id: 'pages.status.FirmwareVersion' }),
-                    value: rs.static.firmware || '-'
-                },
-                {
-                    name: intl.formatMessage({ id: 'pages.status.CompileTime' }),
-                    value: rs.static.build || '-'
-                },
-                {
-                    name: intl.formatMessage({ id: 'pages.status.GpsSupport' }),
-                    value: rs.static.gps === '1' ? intl.formatMessage({ id: 'pages.status.Yes' }) : intl.formatMessage({ id: 'pages.status.No' })
-                }
-            ]
-        })
-        return staticData
-    }
-
-    const getDynamic = (staticData) => {
+        if (!haveStaticData) {
+            ubus.call("system.info", "static_get").then(rs => {
+                staticData = [
+                    {
+                        name: intl.formatMessage({ id: 'pages.status.DeviceModel' }),
+                        value: rs.static.pmodel || '-'
+                    },
+                    {
+                        name: intl.formatMessage({ id: 'pages.status.SN' }),
+                        value: rs.static.sn || '-'
+                    },
+                    {
+                        name: intl.formatMessage({ id: 'pages.status.HardwareVersion' }),
+                        value: rs.static.hwversion || '-'
+                    },
+                    {
+                        name: intl.formatMessage({ id: 'pages.status.FirmwareVersion' }),
+                        value: rs.static.firmware || '-'
+                    },
+                    {
+                        name: intl.formatMessage({ id: 'pages.status.CompileTime' }),
+                        value: rs.static.build || '-'
+                    },
+                    {
+                        name: intl.formatMessage({ id: 'pages.status.GpsSupport' }),
+                        value: rs.static.gps === '1' ? intl.formatMessage({ id: 'pages.status.Yes' }) : intl.formatMessage({ id: 'pages.status.No' })
+                    }
+                ]
+            })
+        } else {
+            staticData = haveStaticData
+        }
         ubus.call("system.info", "dynamic_get").then(rs => {
+
             const time = moment.duration(rs.dynamic.run_time, 'seconds');
             const hours = time.hours() + 'h ';
             const minutes = time.minutes() + 'm ';
@@ -55,9 +54,7 @@ export default () => {
             let run_time = hours + minutes + seconds
             let dynamic = [
                 {
-                    // name: 'runTime',
                     name: intl.formatMessage({ id: 'pages.status.runTime' }),
-
                     value: run_time || '-'
                 },
                 {
@@ -73,34 +70,29 @@ export default () => {
             ]
             setCpuUse(rs.dynamic.cpu_use / 100)
             setMemUse(rs.dynamic.mem_use / 100)
+            setHaveStaticData(staticData)
             setSysArr([...staticData, ...dynamic])
-
         })
     }
-    useEffect(async () => {
-        let staticData = await getStatic()
-        getDynamic(staticData)
+    useEffect(() => {
         const timer = setInterval(() => {
-            getDynamic(staticData)
+            getDynamic()
         }, 3000)
         return () => {
-
-            setTimeout(() => {
-                console.log("触发卸载");
-                clearInterval(timer)
-            }, 1);
+            clearInterval(timer)
         }
+    }, [haveStaticData])
+
+    useEffect(() => {
+        getDynamic()
     }, [])
     return (
         <>
-            {/* <FormattedMessage id="navbar.lang" /> */}
             <Maincontent
                 cpuUse={cpuUse === 0 ? 0.01 : cpuUse}
                 memUse={memUse === 0 ? 0.01 : memUse}
                 content={intl.formatMessage({ id: 'pages.status.SystemInformation' })}
-                // panelTitle={'System'}
                 lable={systemArr}
-            // tips={'系统相关信息'}
             />
         </>
     )
