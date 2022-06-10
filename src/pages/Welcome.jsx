@@ -1,6 +1,6 @@
 import { nanoid } from 'nanoid';
 import { useEffect, useRef, useState } from 'react';
-import Maincontent from './components/maincontent';
+// import Maincontent from './Status/Componenets/RightContent/MaincontenthtContent/Maincontent';
 import './Welcome.less';
 
 const Welcome = () => {

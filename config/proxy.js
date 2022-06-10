@@ -13,5 +13,10 @@ export default {
       target: 'http://192.168.10.1/',
       changeOrigin: true,
     },
+    '/cgi-bin': {
+      target: 'http://192.168.10.1/',
+      changeOrigin: true,
+
+    },
   }
 };

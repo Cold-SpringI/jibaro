@@ -4,12 +4,7 @@ export default [
     layout: false,
     component: './Login',
   },
-  {
-    path: '/logout',
-    icon: 'LogoutOutlined',
-    name: 'logout',
-    component: './Logout',
-  },
+
   {
     path: '/welcome',
     component: './Welcome',
@@ -28,7 +23,7 @@ export default [
       {
         path: 'syslog',
         name: 'syslog',
-        component: './Welcome'
+        component: './Status/syslog'
       },
       {
         path: 'networkInterface',
@@ -103,6 +98,12 @@ export default [
       },
 
     ],
+  },
+  {
+    path: '/logout',
+    icon: 'LogoutOutlined',
+    name: 'logout',
+    component: './Logout',
   },
   {
     path: '/',

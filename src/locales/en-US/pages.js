@@ -13,7 +13,15 @@ export default {
   'pages.status.No': 'No',
   'pages.status.SystemTime': 'System Time',
   'pages.status.Location': 'Location',
-  'pages.status.NotLocated': 'Not Located'
+  'pages.status.NotLocated': 'Not Located',
+
+  'pages.status.System': 'System',
+
+  'pages.status.Firewall': 'Firewall',
+  'pages.status.Dial': 'Cellular',
+  'pages.status.refresh': 'Refresh',
+
+
 
 
 };

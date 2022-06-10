@@ -13,7 +13,13 @@ export default {
   'pages.status.No': '否',
   'pages.status.SystemTime': '系统时间',
   'pages.status.Location': '定位',
-  'pages.status.NotLocated': '未定位'
+  'pages.status.NotLocated': '未定位',
+
+  'pages.status.System': '系统',
+  'pages.status.Firewall': '防火墙',
+  'pages.status.Dial': '拨号',
+  'pages.status.refresh': '刷新',
+
 
 
 

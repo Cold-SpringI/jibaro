@@ -1,6 +1,5 @@
 import React from 'react'
-import Maincontent from '../components/maincontent'
-import { FormattedMessage } from 'umi';
+import Maincontent from './Componenets/Maincontent';
 import { useIntl } from 'umi';
 import { ubus } from '@/util/ubus';
 import { useEffect } from 'react';
@@ -10,6 +9,7 @@ import moment from 'moment';
 export default () => {
     const intl = useIntl();
     const [systemArr, setSysArr] = useState(null)
+    const [timer, setTimer] = useState(null)
     const [cpuUse, setCpuUse] = useState(null)
     const [memUse, setMemUse] = useState(null)
 
@@ -84,7 +84,11 @@ export default () => {
             getDynamic(staticData)
         }, 3000)
         return () => {
-            clearInterval(timer)
+
+            setTimeout(() => {
+                console.log("触发卸载");
+                clearInterval(timer)
+            }, 1);
         }
     }, [])
     return (
