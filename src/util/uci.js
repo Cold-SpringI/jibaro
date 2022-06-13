@@ -378,8 +378,4 @@ uci.writable = function (conf) {
   return session.hasACL('uci', conf, 'write');
 }
 
-export default {
-  install(Vue) {
-    Vue.prototype.$uci = uci;
-  }
-}
+export default uci

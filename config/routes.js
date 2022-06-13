@@ -28,7 +28,7 @@ export default [
       {
         path: 'networkInterface',
         name: 'networkInterface',
-        component: './Welcome'
+        component: './Status/networkInterface'
       },
       {
         path: 'vpn',

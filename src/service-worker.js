@@ -33,7 +33,7 @@ workbox.routing.registerRoute(/\/api\//, workbox.strategies.networkFirst());
 
 /** Handle third party requests */
 workbox.routing.registerRoute(
-  /^https:\/\/gw\.alipayobjects\.com\//,
+  // /^https:\/\/gw\.alipayobjects\.com\//,
   workbox.strategies.networkFirst(),
 );
 workbox.routing.registerRoute(

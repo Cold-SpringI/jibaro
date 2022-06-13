@@ -3,6 +3,7 @@ import { PageLoading, SettingDrawer } from '@ant-design/pro-layout';
 import { history } from 'umi';
 import defaultSettings from '../config/defaultSettings';
 import Logo from '../img/argon.svg'
+import { session } from './util/session';
 
 const loginPath = '/login';
 // const loginPath = '/';
@@ -30,6 +31,12 @@ export function getInitialState() {
 
   if (history.location.pathname !== loginPath) {
     const currentUser = fetchUserInfo();
+    session.isAlive().then(alive => {
+      if (alive)
+        session.startHeartbeat();
+      else
+        session.logout();
+    });
     return {
       fetchUserInfo,
       currentUser,

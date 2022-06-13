@@ -4,6 +4,7 @@ import { history, useModel } from 'umi';
 import logo from '../../../img/argon.svg'
 import { ubus } from '@/util/ubus';
 import './index.less';
+import { session } from '@/util/session';
 
 const Login = () => {
   const [loginOk, setLoginOk] = useState(true);
@@ -28,14 +29,25 @@ const Login = () => {
   };
   const ubusLogin = (param) => {
     setLoginOk(true);
-    ubus.call('session', 'login', { username: param.username, password: param.password }).then(async (r) => {
-      sessionStorage.setItem('sid', r.ubus_rpc_session);
-      await fetchUserInfo({ currentUser: { name: r.data.username } });
-      history.replace('/');
-      return;
-    }).catch((e) => {
-      if (e.error.code === 6) {
-        setLoginOk(false);
+    // ubus.call('session', 'login', { username: param.username, password: param.password }).then(async (r) => {
+    //   sessionStorage.setItem('sid', r.ubus_rpc_session);
+    //   await fetchUserInfo({ currentUser: { name: r.data.username } });
+    //   session.updateACLs().then(() => {
+    //     history.replace('/');
+    //   });
+    //   return;
+    // }).catch((e) => {
+    //   if (e.error.code === 6) {
+    //     setLoginOk(false);
+    //   }
+    // });
+    session.login(param.username, param.password).then(valid => {
+      if (valid) {
+        fetchUserInfo({ currentUser: { name: param.username } });
+        session.updateACLs().then(() => {
+          history.replace('/');
+        });
+        return;
       }
     });
   }
