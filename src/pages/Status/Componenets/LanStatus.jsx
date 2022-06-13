@@ -1,8 +1,13 @@
 import React, { useEffect } from 'react'
 import { Divider, List } from 'antd';
+import { useIntl } from 'umi';
+
 
 export default (props) => {
-
+    const intl = useIntl();
+    const translate = (value) => {
+        return intl.formatMessage({ id: value })
+    }
     const render = (item) => {
         let arr = []
         Object.keys(item).map(i => {
@@ -14,7 +19,7 @@ export default (props) => {
                         flexDirection: 'row',
                         justifyContent: 'space-evenly'
                     }}>
-                        <div style={{ width: '30%' }}>{i}</div>
+                        <div style={{ width: '30%' }}>{translate('pages.status.' + i)}</div>
                         <div style={{ width: '30%' }}>{item[i]}</div>
                     </div>
                 </List.Item >

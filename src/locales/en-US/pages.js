@@ -21,6 +21,30 @@ export default {
   'pages.status.Dial': 'Cellular',
   'pages.status.refresh': 'Refresh',
 
+  "pages.status.rpkts": "Received Packets",
+  "pages.status.rerrs": "Received Errors",
+  "pages.status.rdrops": "Received Drops",
+  "pages.status.rbytes": "Received Bytes",
+  "pages.status.spkts": "Sent Packets",
+  "pages.status.serrs": "Sent Errors",
+  "pages.status.sdrops": "Sent Drops",
+  "pages.status.sbytes": "Sent Bytes",
+  "pages.status.flowInfo": "Statistics Information",
+  "pages.status.status": "Status",
+  "pages.status.ip": "IP Address",
+  "pages.status.mask": "Subnet Mask",
+  "pages.status.mac": "MAC",
+  "pages.status.mtu": "MTU",
+  "pages.status.proto": "Connection Mode",
+  "pages.status.gateway": "Gateway",
+  "pages.status.dns": "DNS Server",
+  "pages.status.connected": "Connected",
+  "pages.status.noConnected": "No Connected"
+
+
+
+
+
 
 
 

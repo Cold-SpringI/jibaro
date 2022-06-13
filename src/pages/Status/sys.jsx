@@ -48,10 +48,14 @@ export default () => {
         ubus.call("system.info", "dynamic_get").then(rs => {
 
             const time = moment.duration(rs.dynamic.run_time, 'seconds');
+            const days = time.days() + 'd ';
             const hours = time.hours() + 'h ';
             const minutes = time.minutes() + 'm ';
             const seconds = time.seconds() + 's';
-            let run_time = hours + minutes + seconds
+            // console.dir(time.days());
+            // console.dir(time.months());
+            // console.dir(time.years());
+            let run_time = days ? days + hours + minutes + seconds : hours + minutes + seconds
             let dynamic = [
                 {
                     name: intl.formatMessage({ id: 'pages.status.runTime' }),

@@ -5,7 +5,6 @@ import request from 'umi-request';
 import { useEffect } from 'react';
 import TabLog from './Componenets/TabLog';
 import { useIntl } from 'umi';
-
 import './style/syslog.less'
 
 export default () => {
@@ -16,13 +15,12 @@ export default () => {
     const [noData, setNoData] = useState(false)
     const intl = useIntl();
 
-
     const translate = (value) => {
         return intl.formatMessage({ id: value })
     }
     const fetchData = (type) => {
-        setLoading(true)
-        setNoData(false)
+        // setLoading(true)
+        // setNoData(false)
         request.post('/cgi-bin/system.log', {
             data: type
         }).then(r => {
@@ -53,6 +51,8 @@ export default () => {
                     breadcrumb: {},
                 }}
                 onTabChange={(activeKey) => {
+                    setLoading(true)
+                    setNoData(false)
                     setSelectKey(activeKey)
                     fetchData(activeKey)
                 }}
